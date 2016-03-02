@@ -1,0 +1,66 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+	   <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+	   <!--xsi:schemaLocation="http://www.springframework.org/schema/beans-->
+	   		<!--http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">-->
+
+	<!--<bean id="facebookConnectionFactory" class="org.springframework.social.facebook.connect.FacebookConnectionFactory">-->
+		<!--<constructor-arg index="0" value="${spring.social.facebook.clientId}"/>-->
+		<!--<constructor-arg index="1" value="${spring.social.facebook.clientSecret}"/>-->
+	<!--</bean>-->
+
+	<!--&lt;!&ndash;<facebook:config app-id="${spring.social.facebook.clientId}" app-secret="${spring.social.facebook.clientSecret}"/>&ndash;&gt;-->
+
+	<!--&lt;!&ndash;<bean id="connectionFactoryLocator" class="org.springframework.social.connect.support.ConnectionFactoryRegistry">&ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="connectionFactories">&ndash;&gt;-->
+			<!--&lt;!&ndash;<list>&ndash;&gt;-->
+				<!--&lt;!&ndash;<bean class="org.springframework.social.facebook.connect.FacebookConnectionFactory">&ndash;&gt;-->
+					<!--&lt;!&ndash;<constructor-arg value="${spring.social.facebook.clientId}" />&ndash;&gt;-->
+					<!--&lt;!&ndash;<constructor-arg value="${spring.social.facebook.clientSecret}" />&ndash;&gt;-->
+				<!--&lt;!&ndash;</bean>&ndash;&gt;-->
+			<!--&lt;!&ndash;</list>&ndash;&gt;-->
+		<!--&lt;!&ndash;</property>&ndash;&gt;-->
+	<!--&lt;!&ndash;</bean>&ndash;&gt;-->
+
+	<!--&lt;!&ndash;&lt;!&ndash;<bean id="connectionFactoryLocator" class="org.springframework.social.connect.support.ConnectionFactoryRegistry"/>&ndash;&gt;&ndash;&gt;-->
+	<!--&lt;!&ndash;<bean id="userIdSource" class="org.springframework.social.security.AuthenticationNameUserIdSource" />&ndash;&gt;-->
+	<!--&lt;!&ndash;<bean id="textEncryptor" class="org.springframework.security.crypto.encrypt.Encryptors"&ndash;&gt;-->
+		  <!--&lt;!&ndash;factory-method="noOpText"/>&ndash;&gt;-->
+
+	<!--&lt;!&ndash;<bean id="usersConnectionRepository" class="org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository">&ndash;&gt;-->
+		<!--&lt;!&ndash;<constructor-arg ref="dataSource"/>&ndash;&gt;-->
+		<!--&lt;!&ndash;<constructor-arg ref="connectionFactoryLocator"/>&ndash;&gt;-->
+		<!--&lt;!&ndash;<constructor-arg ref="textEncryptor"/>&ndash;&gt;-->
+	<!--&lt;!&ndash;</bean>&ndash;&gt;-->
+
+	<!--&lt;!&ndash;<bean id="connectionFactoryRegistry" class="org.springframework.social.connect.support.ConnectionFactoryRegistry">&ndash;&gt;-->
+		<!--&lt;!&ndash;<property name="connectionFactories">&ndash;&gt;-->
+			<!--&lt;!&ndash;<list>&ndash;&gt;-->
+				<!--&lt;!&ndash;<bean class="org.springframework.social.facebook.connect.FacebookConnectionFactory">&ndash;&gt;-->
+					<!--&lt;!&ndash;<constructor-arg value="${spring.social.facebook.clientId}" />&ndash;&gt;-->
+					<!--&lt;!&ndash;<constructor-arg value="${spring.social.facebook.clientSecret}" />&ndash;&gt;-->
+				<!--&lt;!&ndash;</bean>&ndash;&gt;-->
+			<!--&lt;!&ndash;</list>&ndash;&gt;-->
+		<!--&lt;!&ndash;</property>&ndash;&gt;-->
+	<!--&lt;!&ndash;</bean>&ndash;&gt;-->
+
+	<!--&lt;!&ndash;<bean id="facebookServiceProvider" class="com.test.social.service.OAuthServiceProvider">&ndash;&gt;-->
+		<!--&lt;!&ndash;<constructor-arg name="config" ref="facebookServiceConfig" />&ndash;&gt;-->
+	<!--&lt;!&ndash;</bean>&ndash;&gt;-->
+
+	<!--&lt;!&ndash;<bean id="facebookServiceConfig" class="com.test.social.service.OAuthServiceConfig" >&ndash;&gt;-->
+		<!--&lt;!&ndash;<constructor-arg value="${app.config.oauth.facebook.apikey}" />&ndash;&gt;-->
+		<!--&lt;!&ndash;<constructor-arg value="${app.config.oauth.facebook.apisecret}" />&ndash;&gt;-->
+		<!--&lt;!&ndash;<constructor-arg value="${app.config.oauth.facebook.callback}" />&ndash;&gt;-->
+		<!--&lt;!&ndash;<constructor-arg value="org.scribe.builder.api.FacebookApi" />&ndash;&gt;-->
+	<!--&lt;!&ndash;</bean>&ndash;&gt;-->
+
+	<!--&lt;!&ndash;<bean id="oAuth2Parameters" class="org.springframework.social.oauth2.OAuth2Parameters">&ndash;&gt;-->
+		<!--&lt;!&ndash;<constructor-arg>&ndash;&gt;-->
+			<!--&lt;!&ndash;<map>&ndash;&gt;-->
+				<!--&lt;!&ndash;<entry key="redirect_uri"  value="${spring.social.facebook.callBackUrl}"></entry>&ndash;&gt;-->
+				<!--&lt;!&ndash;<entry key="scope" value="${spring.social.facebook.scope}"></entry>&ndash;&gt;-->
+			<!--&lt;!&ndash;</map>&ndash;&gt;-->
+		<!--&lt;!&ndash;</constructor-arg>&ndash;&gt;-->
+	<!--&lt;!&ndash;</bean>&ndash;&gt;-->
+<!--</beans>-->

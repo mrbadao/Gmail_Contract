@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans.xsd
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+	<context:annotation-config/>
+
+	<mybatis:scan base-package="gmail.contract.dao"/>
+
+	<context:component-scan base-package="gmail.contract.">
+		<context:include-filter type="regex" expression="service.impl.*"/>
+		<context:include-filter type="regex" expression="rest.impl.*"/>
+	</context:component-scan>
+
+	<bean id="placeholderConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true"/>
+		<property name="locations">
+			<list>
+				<!--JDBC info import-->
+				<value>/WEB-INF/jdbc.mysql.properties</value>
+
+				<!--social info import-->
+				<!--<value>classpath:gmail/properties/social/spring.social.properties</value>-->
+			</list>
+		</property>
+	</bean>
+
+	<bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="locations">
+			<list>
+				<!--social info import-->
+				<!--<value>classpath:gmail/properties/social/spring.social.properties</value>-->
+			</list>
+		</property>
+	</bean>
+
+	<!--DB/MyBatis-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.mysql.driverClassName}"/>
+		<property name="url" value="${jdbc.mysql.url}"/>
+		<property name="username" value="${jdbc.mysql.username}"/>
+		<property name="password" value="${jdbc.mysql.password}"/>
+
+		<property name="connectionInitSqls" value="SET time_zone = '${jdbc.mysql.timezone}'"/>
+		<property name="testOnBorrow" value="true"/>
+		<property name="validationQuery" value="SELECT 1"/>
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+	<!-- Spring TransactionManager -->
+	<bean id="transactionManager"
+		  class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<!-- MyBatis-Spring(SQLSession) -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<property name="typeHandlersPackage" value="com.github.javaplugs.mybatis"/>
+	</bean>
+
+	<!--<import resource="spring-social.xml"/>-->
+</beans>
