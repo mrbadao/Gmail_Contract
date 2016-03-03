@@ -4,6 +4,7 @@
 
 package gmail.contract.rest;
 
+import gmail.contract.dto.DhtmlTreeDto;
 import gmail.contract.dto.EventDto;
 
 import javax.ws.rs.*;
@@ -21,6 +22,12 @@ public interface EventApi {
 	@Path("/get-event/{eventId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public EventDto getEvent(@PathParam("eventId") long eventId);
+
+
+	@GET
+	@Path("/get-event-tree")
+	@Produces(MediaType.APPLICATION_JSON)
+	public DhtmlTreeDto getDhtmlEventTree();
 
 	@POST
 	@Path("/create-event")

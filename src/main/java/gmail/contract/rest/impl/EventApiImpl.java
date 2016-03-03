@@ -4,6 +4,7 @@
 
 package gmail.contract.rest.impl;
 
+import gmail.contract.dto.DhtmlTreeDto;
 import gmail.contract.dto.EventDto;
 import gmail.contract.rest.EventApi;
 import gmail.contract.service.EventService;
@@ -30,8 +31,18 @@ public class EventApiImpl implements EventApi {
 	@Override
 	public EventDto getEvent(long eventId) {
 		final EventDto eventDto = eventService.getEventById(eventId);
-		log.info(eventDto.toString());
 		return eventDto;
+	}
+
+	@Override
+	public DhtmlTreeDto getDhtmlEventTree() {
+		DhtmlTreeDto dhtmlTreeDto = new DhtmlTreeDto();
+		dhtmlTreeDto.setId("u_1_e");
+		dhtmlTreeDto.setText("Sự kiện");
+		dhtmlTreeDto.setIm0("event.png");
+		dhtmlTreeDto.setIm1("event.png");
+		dhtmlTreeDto.setIm2("event.png");
+		return eventService.getDhtmlEventTree(dhtmlTreeDto);
 	}
 
 	@Override
