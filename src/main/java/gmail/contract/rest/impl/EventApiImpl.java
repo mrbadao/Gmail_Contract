@@ -14,7 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.core.MultivaluedMap;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by hieunc on 23/02/2016.
@@ -36,13 +38,21 @@ public class EventApiImpl implements EventApi {
 
 	@Override
 	public DhtmlTreeDto getDhtmlEventTree() {
+		List<DhtmlTreeDto> dhtmlTreeDtoList = new ArrayList<DhtmlTreeDto>();
+		DhtmlTreeDto dhtmlRootTreeDto = new DhtmlTreeDto();
+		dhtmlRootTreeDto.setId("0");
+
+
 		DhtmlTreeDto dhtmlTreeDto = new DhtmlTreeDto();
 		dhtmlTreeDto.setId("u_1_e");
 		dhtmlTreeDto.setText("Sự kiện");
 		dhtmlTreeDto.setIm0("event.png");
 		dhtmlTreeDto.setIm1("event.png");
 		dhtmlTreeDto.setIm2("event.png");
-		return eventService.getDhtmlEventTree(dhtmlTreeDto);
+		dhtmlTreeDto.setOpen(1);
+		dhtmlTreeDtoList.add(eventService.getDhtmlEventTree(dhtmlTreeDto));
+		dhtmlRootTreeDto.setItem(dhtmlTreeDtoList);
+		return dhtmlRootTreeDto;
 	}
 
 	@Override

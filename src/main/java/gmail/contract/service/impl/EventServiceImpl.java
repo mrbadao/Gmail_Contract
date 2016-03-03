@@ -99,9 +99,9 @@ public class EventServiceImpl implements EventService {
 			DhtmlTreeDto dhtmlTreeDto = new DhtmlTreeDto();
 			dhtmlTreeDto.setId(parentTreeDto.getId() + "_ev_" + eventDto.getEventId());
 			dhtmlTreeDto.setText(eventDto.getEventTitle());
-			dhtmlTreeDto.setIm0("folderOpen.gif");
-			dhtmlTreeDto.setIm1("folderOpen.gif");
-			dhtmlTreeDto.setIm2("folderOpen.gif");
+			dhtmlTreeDto.setIm0("e.png");
+			dhtmlTreeDto.setIm1("e.png");
+			dhtmlTreeDto.setIm2("e.png");
 			dhtmlTreeDtoList.add(dhtmlTreeDto);
 		}
 		parentTreeDto.setItem(dhtmlTreeDtoList);
