@@ -15,6 +15,11 @@
 	</context-param>
 
 	<context-param>
+		<param-name>resteasy.providers</param-name>
+		<param-value>gmail.contract.filer.CORSFilter</param-value>
+	</context-param>
+
+	<context-param>
 		<param-name>resteasy.servlet.mapping.prefix</param-name>
 		<param-value>/gmail</param-value>
 	</context-param>
