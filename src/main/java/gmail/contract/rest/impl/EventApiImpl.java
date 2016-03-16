@@ -14,7 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.ws.rs.core.MultivaluedMap;
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,10 @@ import java.util.List;
 @Component
 public class EventApiImpl implements EventApi {
 	static Logger log = Logger.getLogger(EventApiImpl.class);
+	static final List<String> EventUserList = Collections.unmodifiableList(Arrays.asList("user.png", "user.png", "user.png"));
+	static final List<String> EventImgList = Collections.unmodifiableList(Arrays.asList("event.png", "event.png", "event.png"));
+	static final List<String> MontYearImgList = Collections.unmodifiableList(Arrays.asList("folderOpen.gif", "folderOpen.gif", "folderOpen.gif"));
+	static final List<String> EventEntryImgList = Collections.unmodifiableList(Arrays.asList("leaf.gif", "leaf.gif", "leaf.gif"));
 
 	@Autowired
 	private EventService eventService;
@@ -38,21 +43,28 @@ public class EventApiImpl implements EventApi {
 
 	@Override
 	public DhtmlTreeDto getDhtmlEventTree() {
-		List<DhtmlTreeDto> dhtmlTreeDtoList = new ArrayList<DhtmlTreeDto>();
-		DhtmlTreeDto dhtmlRootTreeDto = new DhtmlTreeDto();
-		dhtmlRootTreeDto.setId("0");
+		DhtmlTreeDto dhtmlTreeRootDto = new DhtmlTreeDto("0");
+		DhtmlTreeDto dhtmlTreeUserDto = new DhtmlTreeDto("g_u_1", "Hiếu Nguyễn (hieunc@gmail.com)", EventUserList, 1);
+		DhtmlTreeDto dhtmlTreeEventDto = new DhtmlTreeDto("u_1_e", "Sự kiện", EventImgList, 1);
 
+		for (String year : eventService.getYearHaveEvent()) {
+			final DhtmlTreeDto entryYearDto = new DhtmlTreeDto(year, year, MontYearImgList);
+			for (String month : eventService.getMonthsHaveEventByYear(year)) {
+				final DhtmlTreeDto entryMonthDto = new DhtmlTreeDto(year + "_" + month, "Tháng " + month, MontYearImgList);
+				for (EventDto eventDto : eventService.getEventsByYearMonth(year, month)) {
+					final DhtmlTreeDto entryDto = new DhtmlTreeDto("e" + String.valueOf(eventDto.getEventId()), eventDto.getEventTitle(), EventEntryImgList);
+					entryMonthDto.putChild(entryDto);
+				}
+				entryYearDto.putChild(entryMonthDto);
+			}
+			dhtmlTreeEventDto.putChild(entryYearDto);
 
-		DhtmlTreeDto dhtmlTreeDto = new DhtmlTreeDto();
-		dhtmlTreeDto.setId("u_1_e");
-		dhtmlTreeDto.setText("Sự kiện");
-		dhtmlTreeDto.setIm0("event.png");
-		dhtmlTreeDto.setIm1("event.png");
-		dhtmlTreeDto.setIm2("event.png");
-		dhtmlTreeDto.setOpen(1);
-		dhtmlTreeDtoList.add(eventService.getDhtmlEventTree(dhtmlTreeDto));
-		dhtmlRootTreeDto.setItem(dhtmlTreeDtoList);
-		return dhtmlRootTreeDto;
+		}
+
+		dhtmlTreeUserDto.putChild(dhtmlTreeEventDto);
+		dhtmlTreeRootDto.putChild(dhtmlTreeUserDto);
+//		log.info(dhtmlTreeRootDto);
+		return dhtmlTreeRootDto;
 	}
 
 	@Override

@@ -11,8 +11,7 @@ import java.util.List;
  */
 public class DhtmlUtil {
 	public static DhtmlTreeDto addTreeNode(DhtmlTreeDto dhtmlTreeDto, List<DhtmlTreeDto> dhtmlTreeDtoList) {
-		dhtmlTreeDto.setChild(dhtmlTreeDtoList.size());
-		dhtmlTreeDto.setItem(dhtmlTreeDtoList);
+
 		return dhtmlTreeDto;
 	}
 
