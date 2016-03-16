@@ -5,6 +5,7 @@
 package gmail.contract.service;
 
 import gmail.contract.dto.LocationDto;
+import gmail.contract.dto.PointAddressDto;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ import java.util.List;
 public interface LocationService {
 	public List<LocationDto> getAllLocation();
 
+	public List<PointAddressDto> getPointAddresses(long locationId);
 }

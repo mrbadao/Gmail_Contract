@@ -5,6 +5,7 @@
 package gmail.contract.rest.impl;
 
 import gmail.contract.dto.LocationDto;
+import gmail.contract.dto.PointAddressDto;
 import gmail.contract.rest.LocationApi;
 import gmail.contract.service.LocationService;
 import org.apache.log4j.Logger;
@@ -28,5 +29,11 @@ public class LocationApiImpl implements LocationApi {
 	@Override
 	public List<LocationDto> getEvent() {
 		return locationService.getAllLocation();
+	}
+
+	@Override
+	public List<PointAddressDto> getPointAddresses(long locationId) {
+		log.info(locationId);
+		return locationService.getPointAddresses(locationId);
 	}
 }
