@@ -52,7 +52,7 @@ public class EventApiImpl implements EventApi {
 			for (String month : eventService.getMonthsHaveEventByYear(year)) {
 				final DhtmlTreeDto entryMonthDto = new DhtmlTreeDto(year + "_" + month, "Tháng " + month, MontYearImgList);
 				for (EventDto eventDto : eventService.getEventsByYearMonth(year, month)) {
-					final DhtmlTreeDto entryDto = new DhtmlTreeDto("e" + String.valueOf(eventDto.getEventId()), eventDto.getEventTitle(), EventEntryImgList);
+					final DhtmlTreeDto entryDto = new DhtmlTreeDto("e_" + String.valueOf(eventDto.getEventId()), eventDto.getEventTitle(), EventEntryImgList);
 					entryMonthDto.putChild(entryDto);
 				}
 				entryYearDto.putChild(entryMonthDto);
