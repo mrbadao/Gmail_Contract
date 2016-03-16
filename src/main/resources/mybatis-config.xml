@@ -8,5 +8,6 @@
 
 	<typeAliases>
 		<typeAlias alias="Event" type="gmail.contract.dto.EventDto"/>
+		<typeAlias alias="Location" type="gmail.contract.dto.LocationDto"/>
 	</typeAliases>
 </configuration>
