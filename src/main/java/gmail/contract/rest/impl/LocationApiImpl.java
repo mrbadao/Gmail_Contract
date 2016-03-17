@@ -33,7 +33,6 @@ public class LocationApiImpl implements LocationApi {
 
 	@Override
 	public List<PointAddressDto> getPointAddresses(long locationId) {
-		log.info(locationId);
 		return locationService.getPointAddresses(locationId);
 	}
 }

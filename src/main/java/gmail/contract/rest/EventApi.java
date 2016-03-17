@@ -26,8 +26,9 @@ public interface EventApi {
 
 	@GET
 	@Path("/get-event-tree")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	@Produces(MediaType.APPLICATION_JSON)
-	public DhtmlTreeDto getDhtmlEventTree();
+	public DhtmlTreeDto getDhtmlEventTree(MultivaluedMap<String, String> formData);
 
 	@POST
 	@Path("/create-event")

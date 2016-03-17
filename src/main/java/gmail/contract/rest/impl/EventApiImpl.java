@@ -42,7 +42,8 @@ public class EventApiImpl implements EventApi {
 	}
 
 	@Override
-	public DhtmlTreeDto getDhtmlEventTree() {
+	public DhtmlTreeDto getDhtmlEventTree(MultivaluedMap<String, String> formData) {
+		log.info(formData);
 		DhtmlTreeDto dhtmlTreeRootDto = new DhtmlTreeDto("0");
 		DhtmlTreeDto dhtmlTreeUserDto = new DhtmlTreeDto("g_u_1", "Hiếu Nguyễn (hieunc@gmail.com)", EventUserList, 1);
 		DhtmlTreeDto dhtmlTreeEventDto = new DhtmlTreeDto("u_1_e", "Sự kiện", EventImgList, 1);
@@ -63,7 +64,6 @@ public class EventApiImpl implements EventApi {
 
 		dhtmlTreeUserDto.putChild(dhtmlTreeEventDto);
 		dhtmlTreeRootDto.putChild(dhtmlTreeUserDto);
-//		log.info(dhtmlTreeRootDto);
 		return dhtmlTreeRootDto;
 	}
 
