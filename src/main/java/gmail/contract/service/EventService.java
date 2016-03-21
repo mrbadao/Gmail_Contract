@@ -6,6 +6,7 @@ package gmail.contract.service;
 
 import gmail.contract.dto.DhtmlTreeDto;
 import gmail.contract.dto.EventDto;
+import gmail.contract.dto.SearchEventsConditionDto;
 
 import java.util.List;
 
@@ -19,12 +20,12 @@ public interface EventService {
 
 	public int createEvent(EventDto eventDto);
 
-	public List<String> getYearHaveEvent();
+	public List<String> getYearHaveEvent(SearchEventsConditionDto searchEventsConditionDto);
 
-	public List<String> getMonthsHaveEventByYear(String year);
+	public List<String> getMonthsHaveEventByYear(String year, SearchEventsConditionDto searchEventsConditionDto);
 
-	public List<EventDto> getEventsByYearMonth(String year, String month);
+	public List<EventDto> getEventsByYearMonth(String year, String month, SearchEventsConditionDto searchEventsConditionDto);
 
-	public DhtmlTreeDto getEventDhtmlxTree();
+	public DhtmlTreeDto getEventDhtmlxTree(SearchEventsConditionDto searchEventsConditionDto);
 
 }

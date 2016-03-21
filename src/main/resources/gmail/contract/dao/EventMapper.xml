@@ -6,6 +6,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gmail.contract.dao.EventMapper">
+	<sql id="searchCondition">
+		<if test="searchCondition.eventTitle != ''">
+			AND e.eventTitle LIKE '%'||#{searchCondition.eventTitle}||'%'
+		</if>
+		<if test="searchCondition.eventLocation > 0">
+			AND e.eventLocationId = #{searchCondition.eventLocation}
+		</if>
+		<if test="searchCondition.eventAddress > 0">
+			AND e.eventAddressId = #{searchCondition.eventAddress}
+		</if>
+		<if test="searchCondition.eventStartDate != ''">
+			AND e.eventStartDate <![CDATA[ >= ]]> #{searchCondition.eventStartDate}
+		</if>
+		<if test="searchCondition.eventEndDate != ''">
+			AND e.eventEndDate <![CDATA[ <= ]]> #{searchCondition.eventEndDate}
+		</if>
+	</sql>
+
 	<insert id="insertEvent" parameterType="Event" useGeneratedKeys="true" keyProperty="dtoEvent.eventId">
 		INSERT INTO `event`
 		(
@@ -40,6 +58,11 @@
 		SELECT YEAR(e.eventStartDate) AS year
 		FROM
 			event e
+		WHERE 1
+		<if test="searchCondition != null">
+			<bind name="searchCondition" value="searchCondition"/>
+			<include refid="searchCondition"/>
+		</if>
 		GROUP BY YEAR(e.eventStartDate) DESC
 	</select>
 
@@ -47,7 +70,11 @@
 		SELECT MONTH(e.eventStartDate) AS month
 		FROM
 			event e
-		WHERE YEAR(e.eventStartDate) = #{year}
+		WHERE YEAR(e.eventStartDate) = #{year} AND 1
+		<if test="searchCondition != null">
+			<bind name="searchCondition" value="searchCondition"/>
+			<include refid="searchCondition"/>
+		</if>
 		GROUP BY MONTH(e.eventStartDate) DESC;
 	</select>
 
@@ -55,6 +82,11 @@
 		SELECT e.*
 		FROM
 			event e
-		WHERE YEAR(e.eventStartDate) = #{year} AND MONTH(e.eventStartDate) = #{month};
+		WHERE YEAR(e.eventStartDate) = #{year} AND MONTH(e.eventStartDate) = #{month} AND 1
+		AND 1
+		<if test="searchCondition != null">
+			<bind name="searchCondition" value="searchCondition"/>
+			<include refid="searchCondition"/>
+		</if>
 	</select>
 </mapper>

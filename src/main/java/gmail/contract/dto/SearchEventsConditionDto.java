@@ -1,7 +1,5 @@
 package gmail.contract.dto;
 
-import java.util.Date;
-
 /**
  * Created by hieunc on 21/03/2016.
  *
@@ -11,8 +9,8 @@ public class SearchEventsConditionDto {
 	private String eventTitle;
 	private int eventLocation;
 	private int eventAddress;
-	private Date eventStartDate;
-	private Date eventEndDate;
+	private String eventStartDate;
+	private String eventEndDate;
 
 	@Override
 	public boolean equals(Object o) {
@@ -75,19 +73,19 @@ public class SearchEventsConditionDto {
 		this.eventAddress = eventAddress;
 	}
 
-	public Date getEventStartDate() {
+	public String getEventStartDate() {
 		return eventStartDate;
 	}
 
-	public void setEventStartDate(Date eventStartDate) {
+	public void setEventStartDate(String eventStartDate) {
 		this.eventStartDate = eventStartDate;
 	}
 
-	public Date getEventEndDate() {
+	public String getEventEndDate() {
 		return eventEndDate;
 	}
 
-	public void setEventEndDate(Date eventEndDate) {
+	public void setEventEndDate(String eventEndDate) {
 		this.eventEndDate = eventEndDate;
 	}
 }

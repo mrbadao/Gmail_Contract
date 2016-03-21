@@ -5,6 +5,7 @@
 package gmail.contract.dao;
 
 import gmail.contract.dto.EventDto;
+import gmail.contract.dto.SearchEventsConditionDto;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -19,9 +20,9 @@ public interface EventMapper {
 
 	int insertEvent(@Param("dtoEvent") EventDto eventDto);
 
-	List<String> getYearHaveEvent();
+	List<String> getYearHaveEvent(@Param("searchCondition") SearchEventsConditionDto searchEventsConditionDto);
 
-	List<String> getMonthsHaveEventByYear(@Param("year") String year);
+	List<String> getMonthsHaveEventByYear(@Param("year") String year, @Param("searchCondition") SearchEventsConditionDto searchEventsConditionDto);
 
-	List<EventDto> getEventsByYearMonth(@Param("year") String year, @Param("month") String month);
+	List<EventDto> getEventsByYearMonth(@Param("year") String year, @Param("month") String month, @Param("searchCondition") SearchEventsConditionDto searchEventsConditionDto);
 }

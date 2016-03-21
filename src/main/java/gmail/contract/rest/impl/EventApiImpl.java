@@ -37,15 +37,15 @@ public class EventApiImpl implements EventApi {
 
 	@Override
 	public DhtmlTreeDto getDhtmlEventTree() {
-		return eventService.getEventDhtmlxTree();
+		return eventService.getEventDhtmlxTree(null);
 	}
 
 	@Override
 	public DhtmlTreeDto searchDhtmlEventTree(MultivaluedMap<String, String> formData) {
-		log.info(formData);
 		final SearchEventsConditionDto searchEventsConditionDto = MultiValueMapUtil.convertToDto(SearchEventsConditionDto.class, formData);
 		log.info(searchEventsConditionDto);
-		return null;
+		log.info(eventService.getYearHaveEvent(searchEventsConditionDto));
+		return eventService.getEventDhtmlxTree(searchEventsConditionDto);
 	}
 
 	@Override

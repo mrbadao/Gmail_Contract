@@ -19,8 +19,8 @@ CREATE TABLE `event` (
   `eventStartDate`   DATETIME                         DEFAULT '0000-00-00 00:00:00',
   `eventEndDate`     DATETIME                         DEFAULT '0000-00-00 00:00:00',
 
-  `eventLocation`    VARCHAR(128)            NOT NULL,
-  `eventAddress`     VARCHAR(128)            NOT NULL,
+  `eventLocationId`  INT(11)                 NOT NULL,
+  `eventAddressId`   INT(11)                 NOT NULL,
 
   `createdDate`      DATETIME                         DEFAULT '0000-00-00 00:00:00',
   `lastUpdate`       DATETIME                         DEFAULT '0000-00-00 00:00:00',
@@ -35,3 +35,4 @@ CREATE TABLE `event` (
   ENGINE = InnoDB
   DEFAULT CHARSET = utf8
   COLLATE = utf8_general_ci;
+
