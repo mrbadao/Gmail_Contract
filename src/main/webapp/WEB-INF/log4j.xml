@@ -11,7 +11,7 @@
 	</appender>
 
 	<logger name="gmail.contract.dao">
-		<level value="error"></level>
+		<level value="debug"></level>
 	</logger>
 
 	<logger name="gmail.contract.dto">
