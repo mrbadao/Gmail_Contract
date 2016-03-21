@@ -11,5 +11,6 @@
 		<typeAlias alias="Location" type="gmail.contract.dto.LocationDto"/>
 		<typeAlias alias="PointAddress" type="gmail.contract.dto.PointAddressDto"/>
 		<typeAlias alias="User" type="gmail.contract.dto.UserDto"/>
+		<typeAlias alias="Role" type="gmail.contract.dto.RoleDto"/>
 	</typeAliases>
 </configuration>
