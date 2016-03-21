@@ -6,6 +6,8 @@ package gmail.contract.rest;
 
 import gmail.contract.dto.DhtmlTreeDto;
 import gmail.contract.dto.EventDto;
+import gmail.contract.rest.annotation.AllowRoles;
+import gmail.contract.rest.annotation.PermissionBinding;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -17,6 +19,8 @@ import javax.ws.rs.core.MultivaluedMap;
  * @Description:
  */
 @Path("/events")
+@PermissionBinding
+@AllowRoles
 public interface EventApi {
 	@GET
 	@Path("/get-event/{eventId}")
