@@ -10,8 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.ws.rs.core.MultivaluedMap;
 
 /**
  * Created by hieunc on 23/02/2016.
@@ -26,10 +25,10 @@ public class AuthorizeApiImpl implements AuthorizeApi {
 	private AuthorizeService authorizeService;
 
 	@Override
-	public String authorizeUser() {
-		Map<String, String> credential = new HashMap<String, String>();
-		credential.put("loginEmail", "hieunc299@gmail.com");
-		credential.put("loginPwd", "07781266010");
+	public String authorizeUser(MultivaluedMap<String, String> credential) {
+//		credential.put("loginEmail", "hieunc299@gmail.com");
+//		credential.put("loginPwd", "07781266010");
+		log.info(credential.get("loginEmail"));
 		log.info(authorizeService.authorizeUser(credential));
 		return "123";
 	}

@@ -6,8 +6,7 @@ import gmail.contract.service.AuthorizeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
+import javax.ws.rs.core.MultivaluedMap;
 
 /**
  * Created by hieunc on 21/03/2016.
@@ -21,7 +20,7 @@ public class AuthorizeServiceImpl implements AuthorizeService {
 	private UserMapper userMapper;
 
 	@Override
-	public UserDto authorizeUser(Map<String, String> credential) {
+	public UserDto authorizeUser(MultivaluedMap<String, String> credential) {
 		return userMapper.authorizeUser(credential);
 	}
 }

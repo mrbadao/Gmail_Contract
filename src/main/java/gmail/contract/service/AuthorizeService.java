@@ -2,7 +2,7 @@ package gmail.contract.service;
 
 import gmail.contract.dto.UserDto;
 
-import java.util.Map;
+import javax.ws.rs.core.MultivaluedMap;
 
 /**
  * Created by hieunc on 21/03/2016.
@@ -10,5 +10,5 @@ import java.util.Map;
  * @Description:
  */
 public interface AuthorizeService {
-	public UserDto authorizeUser(Map<String, String> credential);
+	public UserDto authorizeUser(MultivaluedMap<String, String> credential);
 }

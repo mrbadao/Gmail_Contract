@@ -6,9 +6,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gmail.contract.dao.UserMapper">
-	<select id="authorizeUser" resultType="User" parameterType="java.util.Map">
+	<select id="authorizeUser" resultType="User" parameterType="javax.ws.rs.core.MultivaluedMap">
 		SELECT *
 		FROM user u
-		WHERE u.loginEmail = #{credential.loginEmail} AND u.loginPwd = #{credential.loginPwd};
+		WHERE u.loginEmail = #{credential.loginEmail[0]} AND u.loginPwd = #{credential.loginPwd[0]};
 	</select>
 </mapper>
