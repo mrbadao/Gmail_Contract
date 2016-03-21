@@ -2,32 +2,31 @@
 # Author: hieunc
 # Created: 26/02/2016 12:10
 
-USE `crm`;
-DROP TABLE IF EXISTS `facebook_user_detail`;
-CREATE TABLE `facebook_user_detail` (
-  `facebookId`         BIGINT(20) UNSIGNED NOT NULL,
-  `fullName`           VARCHAR(100) DEFAULT NULL,
-  `firstName`          VARCHAR(50)  DEFAULT NULL,
-  `lastName`           VARCHAR(50)  DEFAULT NULL,
-  `registeredEmail`    VARCHAR(100) DEFAULT NULL,
-  `facebookLink`       VARCHAR(200) DEFAULT NULL,
-  `birthday`           VARCHAR(20)  DEFAULT NULL,
-  `about`              TEXT         DEFAULT NULL,
-  `bio`                TEXT         DEFAULT NULL,
-  `hometown`           VARCHAR(30)  DEFAULT NULL,
-  `relationshipStatus` VARCHAR(50)  DEFAULT NULL,
-  `religion`           VARCHAR(50)  DEFAULT NULL,
-  `timezone`           FLOAT        DEFAULT 0,
-  `website`            VARCHAR(200) DEFAULT NULL,
+USE `marketing`;
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `userId`           INT(11) UNSIGNED AUTO_INCREMENT NOT NULL,
+  `loginEmail`       VARCHAR(128) NOT NULL,
+  `loginPwd`         VARCHAR(128) NOT NULL,
+  `fullName`         VARCHAR(100) DEFAULT NULL,
+  `firstName`        VARCHAR(50)  DEFAULT NULL,
+  `lastName`         VARCHAR(50)  DEFAULT NULL,
+  `birthday`         VARCHAR(20)  DEFAULT NULL,
+  `smtpServer`       VARCHAR(128) DEFAULT 'smtp.gmail.com',
+  `smtpPort`         INT(3)       DEFAULT 465,
+  `imapServer`       VARCHAR(128) DEFAULT 'imap.gmail.com',
+  `imapPort`         INT(3)       DEFAULT 993,
+  `timezone`         FLOAT        DEFAULT 0,
 
 
-  `import_date`        DATETIME     DEFAULT '0000-00-00 00:00:00',
-  `last_update_date`   DATETIME     DEFAULT '0000-00-00 00:00:00',
+  `created`          DATETIME     DEFAULT '0000-00-00 00:00:00',
+  `last_update_date` DATETIME     DEFAULT '0000-00-00 00:00:00',
 
-  PRIMARY KEY (`facebookId`),
-  KEY `registeredEmail` (`registeredEmail`),
+  PRIMARY KEY (`userId`),
+  KEY `loginEmail` (`loginEmail`),
+  KEY `loginPwd` (`loginPwd`),
   KEY `timezone` (`timezone`)
 )
   ENGINE = InnoDB
-  DEFAULT CHARSET = utf8mb4
-  COLLATE = utf8mb4_unicode_ci;
+  DEFAULT CHARSET = utf8
+  COLLATE = utf8_general_ci;
