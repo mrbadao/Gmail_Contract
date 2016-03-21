@@ -4,6 +4,7 @@
 
 package gmail.contract.service;
 
+import gmail.contract.dto.DhtmlTreeDto;
 import gmail.contract.dto.EventDto;
 
 import java.util.List;
@@ -23,5 +24,7 @@ public interface EventService {
 	public List<String> getMonthsHaveEventByYear(String year);
 
 	public List<EventDto> getEventsByYearMonth(String year, String month);
+
+	public DhtmlTreeDto getEventDhtmlxTree();
 
 }
